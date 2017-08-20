@@ -1,0 +1,10 @@
+venv/*
+hadoop/*
+.vagrant/*
+vagrant.sh
+Vagrantfile
+wikipedia.sql
+requirements.txt
+Server/data/test/*
+DataProcess/Analysis/*
+Project5.pdf

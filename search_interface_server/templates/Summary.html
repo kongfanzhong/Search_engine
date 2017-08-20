@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+    {% block content %}
+    <h1> This is a simple summary page!! </h1>
+    
+    {% if 'docid' in result %}
+        The <b>docid</b> of document is <p id = "doc_docid"> {{result['docid']}} </p>
+    {% endif %}
+    
+    {% if result['title']|length > 0 %}
+        The <b>title</b> of document is <p id = "doc_title"> {{result['title']}} </p>
+    {% endif %}
+    
+    {% if result['categories']|length > 0 %}
+        The <b>categories</b> of document is <p id = "doc_categories"> {{result['categories']}} </p>
+    {% endif %}
+    
+    {% if result['image']|length > 0 %}
+        <p> The <b>image</b> of the document is </p> <img id = "doc_image" src = {{result['image']}}>
+    {% endif %}
+    
+    {% if result['summary']|length > 0 %}
+        The <b>summary</b> of document is <p id = "doc_summary" > {{result['summary']}} </p>
+    {% endif %}
+
+    <h3> The similar documents you may interested: </h3>
+    <tb>
+        {% for similarResult in similarResults %}
+            <tr> <th> <a id = "similar_{{similarResult['docid']}}_link" class = "similar_doc" href = {{url_for('main.summary_route', id = similarResult['docid'])}}> {{similarResult['title']}} </a></th> </tr>
+        {% endfor %}
+    </tb>
+{% endblock %}
